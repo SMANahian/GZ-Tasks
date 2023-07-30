@@ -31,6 +31,15 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+use App\Controllers\Auth;
+$routes->get('/auth/(:segment)', [Auth::class, 'auth']);
+$routes->post('/auth/login', 'Auth::login');
+$routes->post('/auth/signup', 'Auth::signup');
+
+use App\Controllers\Profile;
+$routes->get('/profile/(:num)/view', 'Profile::show/$1');
+$routes->get('/profile/(:num)/edit', 'Profile::edit/$1');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
