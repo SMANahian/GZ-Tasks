@@ -32,13 +32,15 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 
 use App\Controllers\Auth;
-$routes->get('/auth/(:segment)', [Auth::class, 'auth']);
+$routes->get('/auth/logout', 'Auth::logout');
+$routes->get('/auth/(:segment)', 'Auth::auth');
 $routes->post('/auth/login', 'Auth::login');
 $routes->post('/auth/signup', 'Auth::signup');
 
 use App\Controllers\Profile;
 $routes->get('/profile/(:num)/view', 'Profile::show/$1');
 $routes->get('/profile/(:num)/edit', 'Profile::edit/$1');
+$routes->post('/profile/update', 'Profile::update');
 
 /*
  * --------------------------------------------------------------------
