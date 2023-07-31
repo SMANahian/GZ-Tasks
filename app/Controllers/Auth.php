@@ -8,7 +8,7 @@ use CodeIgniter\Exceptions\PageNotFoundException;
 class Auth extends BaseController
 {
 
-    public function auth($page = 'login')
+    public function auth($page = '')
     {
         if (! is_file(APPPATH . 'Views/Auth/' . $page . '.php')) {
             // Whoops, we don't have a page for that!

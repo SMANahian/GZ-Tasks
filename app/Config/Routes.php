@@ -33,7 +33,7 @@ $routes->get('/', 'Home::index');
 
 use App\Controllers\Auth;
 $routes->get('/auth/logout', 'Auth::logout');
-$routes->get('/auth/(:segment)', 'Auth::auth');
+$routes->get('/auth/(:segment)', 'Auth::auth/$1');
 $routes->post('/auth/login', 'Auth::login');
 $routes->post('/auth/signup', 'Auth::signup');
 
