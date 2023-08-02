@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\UserModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
+use \App\Entities\User;
 
 class Profile extends BaseController
 {
@@ -15,10 +16,10 @@ class Profile extends BaseController
 
         if($user) {
             $data = [
-                'title' => 'Profile of'.$user['name'],
-                'id' => $user['id'],
-                'name' => $user['name'],
-                'email' => $user['email']
+                'title' => 'Profile of'.$user->name,
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email
             ];
             return view('Profile/view', $data);
         } else {
@@ -32,12 +33,12 @@ class Profile extends BaseController
         $model = new UserModel();
         $user = $model->find($id);
 
-        if($user && $session->get('id') == $user['id']) {
+        if($user && $session->get('id') == $user->id) {
             $data = [
-                'title' => 'Profile of'.$user['name'],
-                'id' => $user['id'],
-                'name' => $user['name'],
-                'email' => $user['email']
+                'title' => 'Profile of'.$user->name,
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email
             ];
             return view('Profile/edit', $data);
         } else {
@@ -57,12 +58,9 @@ class Profile extends BaseController
                 'password' => ['rules' => 'required|min_length[8]|max_length[255]']
             ];
             if($this->validate($rules)) {
-                $data = [
-                    'id' => $id,
-                    'name' => $this->request->getVar('name'),
-                    'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT)
-                ];
-                $model->save($data);
+                $user->name = $this->request->getVar('name');
+                $user->password = $this->request->getVar('password');
+                $model->save($user);
                 return redirect()->to('/profile//'.$id.'/view');
             } else {
                 return redirect()->back()->withInput()->with('error', 'Invalid inputs');

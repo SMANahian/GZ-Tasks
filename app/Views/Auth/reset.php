@@ -1,7 +1,7 @@
 <?= $this->extend('templates/layout'); ?>
 <?= $this->section("content"); ?>
     <div align='center'>
-    <h2>Sign Up</h2>
+    <h2>Log In</h2>
     <?php if(session()->getFlashdata('error')):?>
         <div style='color: red;'>
             <?= session()->getFlashdata('error') ?>
@@ -12,14 +12,10 @@
             <?= session()->getFlashdata('success') ?>
         </div>
     <?php endif;?>
-    <form action="signup" method="post">
-        <label for="name">Full Name:</label>
-        <input type="text" name="name"> </br>
-        <label for="email">Email:</label>
+    <form action="/auth/reset" method="post">
+        <label for="email">Write your email address:</label>
         <input type="email" name="email"> </br>
-        <label for="password">Password:</label>
-        <input type="password" name="password"> </br>
-        <button type="submit">Sign up</button>
+        <button type="submit">Get link</button>
     </form>
-    </div>
+</div>
 <?= $this->endSection(); ?>

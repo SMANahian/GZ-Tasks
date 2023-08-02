@@ -36,6 +36,9 @@ $routes->get('/auth/logout', 'Auth::logout');
 $routes->get('/auth/(:segment)', 'Auth::auth/$1');
 $routes->post('/auth/login', 'Auth::login');
 $routes->post('/auth/signup', 'Auth::signup');
+$routes->post('/auth/reset', 'Auth::reset');
+$routes->get('/auth/reset/(:num)/(:segment)', 'Auth::resetPassword/$1/$2');
+$routes->post('/auth/reset_pass', 'Auth::resetPass');
 
 use App\Controllers\Profile;
 $routes->get('/profile/(:num)/view', 'Profile::show/$1');

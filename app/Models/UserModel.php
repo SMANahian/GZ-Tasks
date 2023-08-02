@@ -11,13 +11,14 @@ class UserModel extends Model
 
     protected $useAutoIncrement = true;
 
-    protected $returnType     = 'array';
+    protected $returnType    = \App\Entities\User::class;
     protected $useSoftDeletes = true;
 
     protected $allowedFields = [
         'name',
         'email',
-        'password'
+        'password',
+        'verify_key',
     ];
 
     // Dates

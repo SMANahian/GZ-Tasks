@@ -28,6 +28,10 @@ class MakeDB extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => '255'
             ],
+            'verify_key' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255'
+            ],
             'created_at' => [
                 'type' => 'TIMESTAMP',
                 'null' => true
