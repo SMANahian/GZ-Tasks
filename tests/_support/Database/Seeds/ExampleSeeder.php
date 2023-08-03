@@ -8,34 +8,34 @@ class ExampleSeeder extends Seeder
 {
     public function run()
     {
-        $factories = [
+        $users = [
             [
-                'name'    => 'Test Factory',
-                'uid'     => 'test001',
-                'class'   => 'Factories\Tests\NewFactory',
-                'icon'    => 'fas fa-puzzle-piece',
-                'summary' => 'Longer sample text for testing',
+                'id' => 1,
+                'name' => 'John Doe',
+                'email' => 'johndoe@gmail.com',
+                'password' => password_hash('12345678', PASSWORD_DEFAULT),
+                'verify_key' => '12345678',
             ],
             [
-                'name'    => 'Widget Factory',
-                'uid'     => 'widget',
-                'class'   => 'Factories\Tests\WidgetPlant',
-                'icon'    => 'fas fa-puzzle-piece',
-                'summary' => 'Create widgets in your factory',
+                'id' => 2,
+                'name' => 'Rakibul',
+                'email' => 'rakib@codeigniter4.com',
+                'password' => password_hash('12345678', PASSWORD_DEFAULT),
+                'verify_key' => '12345678',
             ],
             [
-                'name'    => 'Evil Factory',
-                'uid'     => 'evil-maker',
-                'class'   => 'Factories\Evil\MyFactory',
-                'icon'    => 'fas fa-book-dead',
-                'summary' => 'Abandon all hope, ye who enter here',
+                'id' => 3,
+                'name' => 'Jane Hoe',
+                'email' => 'jone@yahoo.com',
+                'password' => password_hash('12345678', PASSWORD_DEFAULT),
+                'verify_key' => '12345678',
             ],
         ];
 
-        $builder = $this->db->table('factories');
+        $builder = $this->db->table('user');
 
-        foreach ($factories as $factory) {
-            $builder->insert($factory);
+        foreach ($users as $user) {
+            $builder->insert($user);
         }
     }
 }
