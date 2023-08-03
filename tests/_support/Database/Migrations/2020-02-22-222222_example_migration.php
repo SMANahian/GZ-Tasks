@@ -6,32 +6,51 @@ use CodeIgniter\Database\Migration;
 
 class ExampleMigration extends Migration
 {
-    protected $DBGroup = 'tests';
-
     public function up()
     {
-        $this->forge->addField('id');
         $this->forge->addField([
-            'name'       => ['type' => 'varchar', 'constraint' => 31],
-            'uid'        => ['type' => 'varchar', 'constraint' => 31],
-            'class'      => ['type' => 'varchar', 'constraint' => 63],
-            'icon'       => ['type' => 'varchar', 'constraint' => 31],
-            'summary'    => ['type' => 'varchar', 'constraint' => 255],
-            'created_at' => ['type' => 'datetime', 'null' => true],
-            'updated_at' => ['type' => 'datetime', 'null' => true],
-            'deleted_at' => ['type' => 'datetime', 'null' => true],
+            'id' => [
+                'type' => 'BIGINT',
+                'constraint' => 255,
+                'unsigned' => true,
+                'auto_increment' => true
+            ],
+            'name' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255'
+            ],
+            'email' => [
+                'type' => 'VARCHAR',
+                'unique' => true,
+                'constraint' => '255'
+            ],
+            'password' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255'
+            ],
+            'verify_key' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255'
+            ],
+            'created_at' => [
+                'type' => 'TIMESTAMP',
+                'null' => true
+            ],
+            'updated_at' => [
+                'type' => 'TIMESTAMP',
+                'null' => true
+            ],
+            'deleted_at' => [
+                'type' => 'TIMESTAMP',
+                'null' => true
+            ],
         ]);
-
-        $this->forge->addKey('name');
-        $this->forge->addKey('uid');
-        $this->forge->addKey(['deleted_at', 'id']);
-        $this->forge->addKey('created_at');
-
-        $this->forge->createTable('factories');
+        $this->forge->addPrimaryKey('id');
+        $this->forge->createTable('user');
     }
 
     public function down()
     {
-        $this->forge->dropTable('factories');
+        $this->forge->dropTable('user');
     }
 }
