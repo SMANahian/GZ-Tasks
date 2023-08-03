@@ -40,3 +40,7 @@ Run
 And then 
 
 `php spark serve`
+
+Run tests with
+
+`vendor\bin\phpunit`
