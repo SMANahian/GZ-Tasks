@@ -16,7 +16,7 @@ class Profile extends BaseController
 
         if($user) {
             $data = [
-                'title' => 'Profile of'.$user->name,
+                'title' => 'Profile of '.$user->name,
                 'id' => $user->id,
                 'name' => $user->name,
                 'email' => $user->email
@@ -35,7 +35,7 @@ class Profile extends BaseController
 
         if($user && $session->get('id') == $user->id) {
             $data = [
-                'title' => 'Profile of'.$user->name,
+                'title' => 'Profile of '.$user->name,
                 'id' => $user->id,
                 'name' => $user->name,
                 'email' => $user->email
